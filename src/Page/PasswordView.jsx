@@ -34,23 +34,39 @@ const PasswordView = () => {
         Add Password
       </Link>
       <div className="flex justify-between w-full text-white font-semibold">
-        <h2>Website</h2>
-        <h2>Email</h2>
-        <h2>Password</h2>
-        <h2>Delete</h2>
+        <div className="w-1/4">
+          <h2>Website</h2>
+        </div>
+        <div className="w-1/4">
+          <h2>Email</h2>
+        </div>
+        <div className="w-1/4">
+          <h2>Password</h2>
+        </div>
+        <div className="w-1/4">
+          <h2>Delete</h2>
+        </div>
       </div>
       {passwordsList.map((item) => {
         return (
           <div className="flex justify-between w-full text-white font-semibold">
-            <h2>{item.Website}</h2>
-            <h2>{item.Email}</h2>
-            <h2>{item.Password}</h2>
-            <button
-              className="text-red-400"
-              onClick={(e) => deletePassword(item.Website, e)}
-            >
-              Delete
-            </button>
+            <div className="w-1/4">
+              <h2>{item.Website}</h2>
+            </div>
+            <div className="w-1/4">
+              <h2>{item.Email}</h2>
+            </div>
+            <div className="w-1/4">
+              <h2>{item.Password}</h2>
+            </div>
+            <div className="w-1/4">
+              <button
+                className="text-red-400"
+                onClick={(e) => deletePassword(item.Website, e)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         );
       })}
