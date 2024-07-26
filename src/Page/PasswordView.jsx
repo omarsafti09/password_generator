@@ -5,6 +5,8 @@ import { supabase } from "../utils/supabase";
 const PasswordView = () => {
   const [passwordsList, setPasswordsList] = useState([]);
 
+  //Get passwords from database
+  //useEffect() is used to stop rerenders
   useEffect(() => {
     const getPasswords = async () => {
       const { data: passwords } = await supabase.from("Passwords").select();
@@ -20,7 +22,7 @@ const PasswordView = () => {
       .delete()
       .eq("Website", id);
     alert("Password Deleted Successfully...");
-    setTimeout(window.location.reload(), 3000);
+    window.location.reload();
   };
 
   return (

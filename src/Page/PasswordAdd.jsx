@@ -12,6 +12,7 @@ const PasswordAdd = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Function to save password to the database.
   const savePassword = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase.from("Passwords").insert([
@@ -21,15 +22,20 @@ const PasswordAdd = () => {
         Password: password,
       },
     ]);
+    //Alert is used for conveinece
     alert("Password Saved Successfully...");
-    setTimeout(window.location.reload(), 3000);
+    //Since alert() blocks code execution after it, setTimeout() isn't needed
+    //ToDo: Remove setTimeout()
+    window.location.reload();
   };
 
+  //Function to generate the password.
   const generatePassword = (e) => {
     e.preventDefault();
     const charachters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()-_=+[]{}<>?";
     let generatedPassword = "";
+    //User can specify password length, mut 12 is good.
     for (let i = 0; i < 12; i++) {
       const r = Math.floor(Math.random() * charachters.length);
       generatedPassword += charachters.charAt(r);
